@@ -1,0 +1,106 @@
+The ``5-text_indentation`` module
+============================
+
+Using ``text_indentation``
+---------------------
+
+check for module docstring:
+    >>> m = __import__("5-text_indentation").__doc__
+    >>> len(m) > 1
+    True
+
+Import function from module:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+check for function docstring:
+    >>> f = __import__("5-text_indentation").text_indentation.__doc__
+    >>> len(f) > 1
+    True
+
+tests:
+Printing text containing the delimiters :, ? and .:
+    >>> text_indentation("""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere. Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres""")
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <BLANKLINE>
+    Quonam modo?
+    <BLANKLINE>
+    Utrum igitur tibi litteram videor an totas paginas commovere?
+    <BLANKLINE>
+    Non autem hoc:
+    <BLANKLINE>
+    igitur ne illud quidem.
+    <BLANKLINE>
+    Fortasse id optimum, sed ubi illud:
+    <BLANKLINE>
+    Plus semper voluptatis?
+    <BLANKLINE>
+    Teneo, inquit, finem illi videri nihil dolere.
+    <BLANKLINE>
+    Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+    <BLANKLINE>
+    Si id dicis, vicimus.
+    <BLANKLINE>
+    Inde sermone vario sex illa a Dipylo stadia confecimus.
+    <BLANKLINE>
+    Sin aliud quid voles, postea.
+    <BLANKLINE>
+    Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+    <BLANKLINE>
+    Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres
+
+Printing text with spaces around:
+    >>> text_indentation("Lorem ipsum      dolor sit amet          consectetur")
+    Lorem ipsum      dolor sit amet          consectetur
+
+Passing None as a text:
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Passing an integer as a text:
+    >>> text_indentation(10)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Passing an empty string as a text:
+    >>> text_indentation("")
+
+Passing a new line as a text:
+    >>> text_indentation('\n')
+    <BLANKLINE>
+
+Passing no arguments:
+    >>> text_indentation()
+    Traceback (most recent call last):
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+Passing more than 1 argument:
+    >>> text_indentation("mary", "ate", "food")
+    Traceback (most recent call last):
+    TypeError: text_indentation() takes 1 positional argument but 3 were given
+
+Passing newline at the beginning of text:
+    >>> text_indentation("\n Hi. What is your name ?")
+    <BLANKLINE>
+     Hi.
+    <BLANKLINE>
+    What is your name ?
+    <BLANKLINE>
+
+Passing newline at the middle of text:
+    >>> text_indentation("Hi \n. What is your name ?")
+    Hi 
+    .
+    <BLANKLINE>
+    What is your name ?
+    <BLANKLINE>
+
+passing newline at the end of text:
+    >>> text_indentation("Hi. What is your name ?\n")
+    Hi.
+    <BLANKLINE>
+    What is your name ?
+    <BLANKLINE>
+    <BLANKLINE>
