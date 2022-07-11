@@ -130,8 +130,8 @@ class Rectangle(Base):
         """ returns a string representation of the Rectangle """
 
         return "[{}] ({}) {}/{} - {}/{}".format(type(self).__name__, self.id,
-                                             self.__x, self.__y,
-                                             self.__width, self.__height)
+                                                self.__x, self.__y,
+                                                self.__width, self.__height)
 
     def update(self, *args, **kwargs):
         """ assigns key/value arguments to attributes of an instance.

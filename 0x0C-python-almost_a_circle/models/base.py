@@ -143,7 +143,6 @@ class Base:
 
         import turtle
 
-
         turt = turtle.Turtle()
         turt.screen.bgcolor("#b7312c")
         turt.pensize(3)
