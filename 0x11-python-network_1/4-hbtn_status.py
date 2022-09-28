@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 """Fetches https://intranet.hbtn.io/status"""
 
+import requests
 
 if __name__ == '__main__':
-    import requests
-
-    response = requests.get("https://intranet.hbtn.io/status")
-    print('Body response:')
-    print('\t- type: {}'.format(type(response.text)))
-    print('\t- content: {}'.format(response.text))
+    r = requests.get("https://intranet.hbtn.io/status")
+    print(f"Body response:\n\t- type: {type(r.text)}\n\t- content: {r.text}")
